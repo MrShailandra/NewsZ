@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_plactical_icoderz/screens/login_page.dart';
 import 'package:flutter_plactical_icoderz/screens/screen_handler.dart';
+import 'package:flutter_plactical_icoderz/screens/splashScreen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 void main() async {
@@ -35,7 +35,8 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: "Practical Round ",
-      home: isLoggedIn ? ScreenHandler() : LoginScreen(),
+      home: SplashScreen(),
     );
   }
 }
+//isLoggedIn ? ScreenHandler() : LoginScreen()

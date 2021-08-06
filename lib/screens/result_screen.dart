@@ -7,8 +7,6 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-import 'login_page.dart';
-
 class ResultPage extends StatefulWidget {
   ResultPage({required this.query, required this.type});
   final String query;
@@ -30,20 +28,6 @@ class _ResultPageState extends State<ResultPage> {
               color: Colors.black, fontWeight: FontWeight.bold, fontSize: 25),
         ),
         centerTitle: true,
-        actions: [
-          IconButton(
-              onPressed: () async {
-                Navigator.pushReplacement(context,
-                    MaterialPageRoute(builder: (context) => LoginScreen()));
-                SharedPreferences preferences =
-                    await SharedPreferences.getInstance();
-                preferences.clear();
-              },
-              icon: FaIcon(
-                FontAwesomeIcons.signOutAlt,
-                color: Colors.black,
-              ))
-        ],
         backgroundColor: Colors.amberAccent,
         elevation: 0.5,
       ),

@@ -14,15 +14,8 @@ class DashboardScreen extends StatefulWidget {
 
 class _DashboardScreenState extends State<DashboardScreen> {
   String? country = "in";
-  void setCountry() async {
-    SharedPreferences preferences = await SharedPreferences.getInstance();
-    country = preferences.getString("country");
-    print(country);
-  }
-
   @override
   void initState() {
-    setCountry();
     super.initState();
   }
 

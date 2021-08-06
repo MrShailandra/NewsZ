@@ -3,8 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_plactical_icoderz/screens/SearchScreen.dart';
 import 'package:flutter_plactical_icoderz/screens/category_screen.dart';
 import 'package:flutter_plactical_icoderz/screens/dashboard.dart';
-import 'package:flutter_plactical_icoderz/screens/login_page.dart';
-import 'package:flutter_plactical_icoderz/screens/profile_screen.dart';
+
 import 'package:flutter_plactical_icoderz/screens/result_screen.dart';
 import 'package:flutter_plactical_icoderz/utils/constant.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -144,18 +143,6 @@ class _ScreenHandlerState extends State<ScreenHandler> {
               color: Colors.black,
             ),
           ),
-          IconButton(
-              onPressed: () async {
-                Navigator.pushReplacement(context,
-                    MaterialPageRoute(builder: (context) => LoginScreen()));
-                SharedPreferences preferences =
-                    await SharedPreferences.getInstance();
-                preferences.clear();
-              },
-              icon: FaIcon(
-                FontAwesomeIcons.signOutAlt,
-                color: Colors.black,
-              )),
         ],
         backgroundColor: Colors.amberAccent,
         elevation: 0.5,
