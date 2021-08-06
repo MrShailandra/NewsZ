@@ -1,4 +1,4 @@
-# flutter_plactical_icoderz
+# NewsZ
 
 A new Flutter project.
 
