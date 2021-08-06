@@ -6,8 +6,8 @@ import 'package:url_launcher/url_launcher.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 
 class DashboardScreen extends StatefulWidget {
-  const DashboardScreen({Key? key}) : super(key: key);
-
+  DashboardScreen({required this.country});
+  final String country;
   @override
   _DashboardScreenState createState() => _DashboardScreenState();
 }
@@ -29,7 +29,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
               Container(
                 height: MediaQuery.of(context).size.height,
                 child: FutureBuilder<List<Article>>(
-                  future: getCountry(country),
+                  future: getCountry(widget.country),
                   builder: (BuildContext context, AsyncSnapshot snapshot) {
                     if (snapshot.hasError) {
                       return Text("Something Went Wrong");

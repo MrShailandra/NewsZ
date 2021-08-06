@@ -14,7 +14,8 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'country_screen.dart';
 
 class ScreenHandler extends StatefulWidget {
-  const ScreenHandler({Key? key}) : super(key: key);
+  ScreenHandler({required this.countryName});
+  final String countryName;
 
   @override
   _ScreenHandlerState createState() => _ScreenHandlerState();
@@ -28,7 +29,9 @@ class _ScreenHandlerState extends State<ScreenHandler> {
     setState(() {});
     switch (_currentIndex) {
       case 0:
-        return DashboardScreen();
+        return DashboardScreen(
+          country: widget.countryName,
+        );
       case 1:
         return SearchScreen();
 
@@ -77,6 +80,8 @@ class _ScreenHandlerState extends State<ScreenHandler> {
                                 List.generate(countryFull.length, (index) {
                               return GestureDetector(
                                 onTap: () async {
+                                  Navigator.pop(context);
+
                                   print(countryShort[index]);
                                   SharedPreferences preferences =
                                       await SharedPreferences.getInstance();

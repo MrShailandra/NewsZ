@@ -13,11 +13,11 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
-  String? country = "in";
+  String Country = "in";
   void setCountry() async {
     SharedPreferences preferences = await SharedPreferences.getInstance();
-    country = preferences.getString("country");
-    print(country);
+    Country = preferences.getString("country")!;
+    print(Country);
   }
 
   @override
@@ -26,7 +26,11 @@ class _SplashScreenState extends State<SplashScreen> {
     Timer(
         Duration(seconds: 3),
         () => Navigator.pushReplacement(
-            context, MaterialPageRoute(builder: (context) => ScreenHandler())));
+            context,
+            MaterialPageRoute(
+                builder: (context) => ScreenHandler(
+                      countryName: Country,
+                    ))));
     super.initState();
   }
 
