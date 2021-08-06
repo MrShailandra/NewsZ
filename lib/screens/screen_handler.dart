@@ -1,10 +1,8 @@
-import 'package:flutter/foundation.dart';
+import 'package:flutter_phoenix/flutter_phoenix.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_plactical_icoderz/screens/SearchScreen.dart';
 import 'package:flutter_plactical_icoderz/screens/category_screen.dart';
 import 'package:flutter_plactical_icoderz/screens/dashboard.dart';
-
-import 'package:flutter_plactical_icoderz/screens/result_screen.dart';
 import 'package:flutter_plactical_icoderz/utils/constant.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
@@ -87,14 +85,7 @@ class _ScreenHandlerState extends State<ScreenHandler> {
                                       await SharedPreferences.getInstance();
                                   preferences.setString(
                                       "country", countryShort[index]);
-
-                                  Navigator.push(context,
-                                      MaterialPageRoute(builder: (context) {
-                                    return ResultPage(
-                                      type: "country",
-                                      query: countryShort[index],
-                                    );
-                                  }));
+                                  Phoenix.rebirth(context);
                                 },
                                 child: Container(
                                   child: Column(

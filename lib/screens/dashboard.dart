@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_plactical_icoderz/models/news_model.dart';
 import 'package:flutter_plactical_icoderz/utils/http_services.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+
 import 'package:url_launcher/url_launcher.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 
