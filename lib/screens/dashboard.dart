@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_plactical_icoderz/models/news_model.dart';
 import 'package:flutter_plactical_icoderz/utils/http_services.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 
@@ -12,14 +13,21 @@ class DashboardScreen extends StatefulWidget {
 }
 
 class _DashboardScreenState extends State<DashboardScreen> {
-  TextEditingController controller = TextEditingController();
+  String? country = "in";
+  void setCountry() async {
+    SharedPreferences preferences = await SharedPreferences.getInstance();
+    country = preferences.getString("country");
+    print(country);
+  }
+
+  @override
+  void initState() {
+    setCountry();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
-    initState() {
-      getRequest(controller.text);
-      super.initState();
-    }
-
     return Scaffold(
         resizeToAvoidBottomInset: false,
         body: SingleChildScrollView(
@@ -28,7 +36,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
               Container(
                 height: MediaQuery.of(context).size.height,
                 child: FutureBuilder<List<Article>>(
-                  future: getRequest(controller.text),
+                  future: getCountry(country),
                   builder: (BuildContext context, AsyncSnapshot snapshot) {
                     if (snapshot.hasError) {
                       return Text("Something Went Wrong");
@@ -133,7 +141,6 @@ class _DashboardScreenState extends State<DashboardScreen> {
                                 ],
                               ),
                             );
-                            throw "Error";
                           });
                     } else {
                       return Center(child: CircularProgressIndicator());
@@ -146,34 +153,3 @@ class _DashboardScreenState extends State<DashboardScreen> {
         ));
   }
 }
-/*
-
-ListTile(
-                                    onTap: () async {
-                                      print(snapshot.data[index].url);
-
-                                      await launch(snapshot.data[index].url);
-                                    },
-                                    leading: CircleAvatar(
-                                        radius: 30,
-                                        backgroundImage: (snapshot
-                                                    .data[index].urlToImage) !=
-                                                null
-                                            ? NetworkImage(
-                                                snapshot.data[index].urlToImage)
-                                            : NetworkImage(
-                                                "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg")),
-                                    title: Text(
-                                      (snapshot.data[index].title),
-                                      textAlign: TextAlign.justify,
-                                      style: TextStyle(
-                                          fontWeight: FontWeight.bold),
-                                    ),
-                                    subtitle: Text(
-                                      (snapshot.data[index].description) != null
-                                          ? (snapshot.data[index].description)
-                                          : "No Description",
-                                      textAlign: TextAlign.justify,
-                                    ),
-                                  )
-*/

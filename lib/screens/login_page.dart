@@ -130,6 +130,24 @@ class _LoginScreenState extends State<LoginScreen> {
                             fontSize: 18,
                           ),
                         ),
+                      ),
+                      SizedBox(
+                        height: 20,
+                      ),
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.pushReplacement(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => ScreenHandler()));
+                        },
+                        child: Text(
+                          "Skip Login",
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 18,
+                          ),
+                        ),
                       )
                     ],
                   ),
